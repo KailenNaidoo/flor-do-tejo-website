@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Flor-Do-Tejo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Flor-Do-Tejo</h1>
+                    <span class="tagline">Seafood &bull; Poultry &bull; Frozen Foods</span>
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="order.html">Order Online</a></li>
+                <li><a href="track.html">Track Order</a></li>
+                <li><a href="cart.html" class="cart-link">Cart (<span id="cartCount">0</span>)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h2>Checkout</h2>
+            <p>Complete your order details and payment</p>
+        </div>
+    </section>
+
+    <!-- Checkout Content -->
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-layout">
+                <!-- Checkout Form -->
+                <div class="checkout-form">
+                    <!-- Step Indicators -->
+                    <div class="checkout-steps">
+                        <div class="step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span class="step-label">Delivery</span>
+                        </div>
+                        <div class="step-line"></div>
+                        <div class="step" data-step="2">
+                            <span class="step-number">2</span>
+                            <span class="step-label">Payment</span>
+                        </div>
+                        <div class="step-line"></div>
+                        <div class="step" data-step="3">
+                            <span class="step-number">3</span>
+                            <span class="step-label">Confirm</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Delivery Details -->
+                    <div class="form-step active" id="step1">
+                        <h3>Delivery Details</h3>
+                        <form id="deliveryForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company / Restaurant Name</label>
+                                <input type="text" id="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Delivery Address</label>
+                                <input type="text" id="address" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postalCode">Postal Code</label>
+                                    <input type="text" id="postalCode" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="deliveryNotes">Delivery Notes (optional)</label>
+                                <textarea id="deliveryNotes" rows="3" placeholder="Gate code, special instructions..."></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continue to Payment</button>
+                        </form>
+                    </div>
+
+                    <!-- Step 2: Payment -->
+                    <div class="form-step" id="step2">
+                        <h3>Payment Method</h3>
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="card" checked>
+                                <div class="payment-card">
+                                    <span class="payment-icon">&#x1F4B3;</span>
+                                    <div>
+                                        <strong>Credit / Debit Card</strong>
+                                        <p>Visa, Mastercard, Amex</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="eft">
+                                <div class="payment-card">
+                                    <span class="payment-icon">&#x1F3E6;</span>
+                                    <div>
+                                        <strong>EFT / Bank Transfer</strong>
+                                        <p>Direct bank payment</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="paymentMethod" value="cod">
+                                <div class="payment-card">
+                                    <span class="payment-icon">&#x1F4B5;</span>
+                                    <div>
+                                        <strong>Cash on Delivery</strong>
+                                        <p>Pay when you receive</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Card Details (shown when card is selected) -->
+                        <div class="card-details" id="cardDetails">
+                            <div class="form-group">
+                                <label for="cardName">Name on Card</label>
+                                <input type="text" id="cardName" placeholder="As it appears on your card">
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cardExpiry">Expiry Date</label>
+                                    <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cardCvv">CVV</label>
+                                    <input type="text" id="cardCvv" placeholder="123" maxlength="4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- EFT Details -->
+                        <div class="eft-details" id="eftDetails" style="display:none;">
+                            <div class="eft-info">
+                                <h4>Bank Details</h4>
+                                <p><strong>Bank:</strong> FNB</p>
+                                <p><strong>Account Name:</strong> Flor-Do-Tejo (Pty) Ltd</p>
+                                <p><strong>Account Number:</strong> 62876543210</p>
+                                <p><strong>Branch Code:</strong> 250655</p>
+                                <p><strong>Reference:</strong> <span id="eftRef">Your order number</span></p>
+                                <p class="eft-note">Please use your order number as reference. Orders will be processed once payment is confirmed.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-outline-dark" onclick="prevStep(1)">Back</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(3)">Review Order</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Confirmation -->
+                    <div class="form-step" id="step3">
+                        <h3>Review &amp; Confirm</h3>
+                        <div class="order-review">
+                            <div class="review-section">
+                                <h4>Delivery To</h4>
+                                <div id="reviewDelivery"></div>
+                            </div>
+                            <div class="review-section">
+                                <h4>Payment Method</h4>
+                                <div id="reviewPayment"></div>
+                            </div>
+                            <div class="review-section">
+                                <h4>Order Items</h4>
+                                <div id="reviewItems"></div>
+                            </div>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-outline-dark" onclick="prevStep(2)">Back</button>
+                            <button type="button" class="btn btn-gold" id="placeOrderBtn" onclick="placeOrder()">Place Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary Sidebar -->
+                <div class="checkout-summary">
+                    <h3>Order Summary</h3>
+                    <div id="checkoutItems"></div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="checkoutSubtotal">R0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <span id="checkoutDelivery">R150.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>VAT (15%)</span>
+                        <span id="checkoutVat">R0.00</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="checkoutTotal">R0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Success Modal -->
+    <div class="modal-overlay" id="successModal" style="display:none;">
+        <div class="modal-content">
+            <div class="success-icon">&#x2713;</div>
+            <h2>Order Placed Successfully!</h2>
+            <p>Your order number is:</p>
+            <div class="order-number" id="orderNumber"></div>
+            <p>You can track your order status at any time.</p>
+            <div class="modal-buttons">
+                <a href="track.html" class="btn btn-primary">Track My Order</a>
+                <a href="index.html" class="btn btn-outline-dark">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Flor-Do-Tejo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="cart.js"></script>
+    <script src="checkout.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

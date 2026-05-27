@@ -14,8 +14,10 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <div class="logo">
-                <h1>Flor-Do-Tejo</h1>
-                <span class="tagline">Seafood &bull; Poultry &bull; Frozen Foods</span>
+                <a href="index.html">
+                    <h1>Flor-Do-Tejo</h1>
+                    <span class="tagline">Seafood &bull; Poultry &bull; Frozen Foods</span>
+                </a>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span>
@@ -25,11 +27,10 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#seafood">Seafood</a></li>
-                <li><a href="#poultry">Poultry</a></li>
-                <li><a href="#dry-goods">Dry Goods</a></li>
-                <li><a href="#frozen">Frozen</a></li>
+                <li><a href="order.html">Order Online</a></li>
+                <li><a href="track.html">Track Order</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="cart.html" class="cart-link">&#x1F6D2; Cart (<span id="cartCount">0</span>)</a></li>
             </ul>
         </div>
     </nav>
@@ -42,7 +43,7 @@
             <h2>Premium Seafood, Chicken &amp; Dry Goods Suppliers</h2>
             <p>Supplying restaurants, hotels &amp; caterers with the finest quality products</p>
             <div class="hero-cta">
-                <a href="#catalog" class="btn btn-primary">View Our Catalog</a>
+                <a href="order.html" class="btn btn-primary">Order Now</a>
                 <a href="#contact" class="btn btn-outline">Get In Touch</a>
             </div>
         </div>
@@ -89,196 +90,12 @@
         </div>
     </section>
 
-    <!-- Catalog Section -->
-    <section class="catalog" id="catalog">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Product Range</h2>
-                <div class="gold-divider"></div>
-                <p>Hand selected, premium quality products for your business</p>
-            </div>
-
-            <!-- Fresh Seafood -->
-            <div class="catalog-category" id="seafood">
-                <div class="category-header">
-                    <h3><span class="cat-icon">&#x1F41F;</span> Fresh Seafood</h3>
-                    <p>Hand Selected, Ocean Fresh, Premium Quality</p>
-                </div>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image seafood-bg">
-                            <span class="product-emoji">&#x1F41F;</span>
-                        </div>
-                        <h4>Hake</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image seafood-bg">
-                            <span class="product-emoji">&#x1F990;</span>
-                        </div>
-                        <h4>Prawns</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image seafood-bg">
-                            <span class="product-emoji">&#x1F991;</span>
-                        </div>
-                        <h4>Calamari</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image seafood-bg">
-                            <span class="product-emoji">&#x1F41A;</span>
-                        </div>
-                        <h4>Mussels</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image seafood-bg">
-                            <span class="product-emoji">&#x1F980;</span>
-                        </div>
-                        <h4>Crab</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image seafood-bg">
-                            <span class="product-emoji">&#x1F420;</span>
-                        </div>
-                        <h4>Salmon</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image seafood-bg">
-                            <span class="product-emoji">&#x1F41F;</span>
-                        </div>
-                        <h4>Yellowtail</h4>
-                    </div>
-                </div>
-
-                <!-- Prawns Detail -->
-                <div class="prawn-detail">
-                    <h4>&#x1F990; Prawn Product Range</h4>
-                    <div class="prawn-list">
-                        <ul>
-                            <li>Prawns Crumbed Butterfly</li>
-                            <li>Prawn 8/12</li>
-                            <li>Prawn 13/15</li>
-                            <li>Prawn 16/20</li>
-                        </ul>
-                        <ul>
-                            <li>Prawn 26/30</li>
-                            <li>Prawn Meat 20/40</li>
-                            <li>Prawn Meat 40/60</li>
-                            <li>Prawn Meat 60/80</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quality Chicken Range -->
-            <div class="catalog-category" id="poultry">
-                <div class="category-header">
-                    <h3><span class="cat-icon">&#x1F357;</span> Quality Chicken Range</h3>
-                    <p>Fresh &amp; Frozen Chicken Products You Can Trust</p>
-                </div>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image chicken-bg">
-                            <span class="product-emoji">&#x1F357;</span>
-                        </div>
-                        <h4>Fresh Chicken Portions</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image chicken-bg">
-                            <span class="product-emoji">&#x1F414;</span>
-                        </div>
-                        <h4>Frozen Chicken Products</h4>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dry Goods -->
-            <div class="catalog-category" id="dry-goods">
-                <div class="category-header">
-                    <h3><span class="cat-icon">&#x1F6D2;</span> Reliable Dry Goods Supply</h3>
-                    <p>Quality Dry Goods, Consistent Supply</p>
-                </div>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image drygoods-bg">
-                            <span class="product-emoji">&#x1F35A;</span>
-                        </div>
-                        <h4>Rice</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image drygoods-bg">
-                            <span class="product-emoji">&#x1F9C2;</span>
-                        </div>
-                        <h4>Spices</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image drygoods-bg">
-                            <span class="product-emoji">&#x1FAD2;</span>
-                        </div>
-                        <h4>Oils</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image drygoods-bg">
-                            <span class="product-emoji">&#x1F4E6;</span>
-                        </div>
-                        <h4>Dry Goods Packaging</h4>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Frozen Specialities -->
-            <div class="catalog-category" id="frozen">
-                <div class="category-header">
-                    <h3><span class="cat-icon">&#x1F35F;</span> Chips, Specialities &amp; Frozen Veg</h3>
-                    <p>Proudly Local &mdash; 700 Tons Monthly, Quality Guaranteed</p>
-                </div>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image frozen-bg">
-                            <span class="product-emoji">&#x1F35F;</span>
-                        </div>
-                        <h4>French Fries</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image frozen-bg">
-                            <span class="product-emoji">&#x1F966;</span>
-                        </div>
-                        <h4>Frozen Vegetables</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image frozen-bg">
-                            <span class="product-emoji">&#x1F9C5;</span>
-                        </div>
-                        <h4>Onion Rings</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image frozen-bg">
-                            <span class="product-emoji">&#x1F414;</span>
-                        </div>
-                        <h4>Crumbed Specialities</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image frozen-bg">
-                            <span class="product-emoji">&#x1F360;</span>
-                        </div>
-                        <h4>Sweet Potato Fries</h4>
-                    </div>
-                    <div class="product-card">
-                        <div class="product-image frozen-bg">
-                            <span class="product-emoji">&#x1F300;</span>
-                        </div>
-                        <h4>Curly Fries</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Fresh Quality Delivered</h2>
-            <p>Premium Products. Competitive Prices. Reliable Service.</p>
-            <a href="#contact" class="btn btn-gold">Contact Our Sales Team</a>
+            <h2>Ready to Order?</h2>
+            <p>Browse our full catalog and place your order online today.</p>
+            <a href="order.html" class="btn btn-gold">Shop Now</a>
         </div>
     </section>
 
@@ -327,11 +144,10 @@
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#seafood">Seafood</a></li>
-                        <li><a href="#poultry">Poultry</a></li>
-                        <li><a href="#dry-goods">Dry Goods</a></li>
-                        <li><a href="#frozen">Frozen</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="order.html">Order Online</a></li>
+                        <li><a href="track.html">Track Order</a></li>
+                        <li><a href="cart.html">Cart</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -347,6 +163,8 @@
         </div>
     </footer>
 
+    <script src="products.js"></script>
+    <script src="cart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

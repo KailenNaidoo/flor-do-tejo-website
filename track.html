@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Order | Flor-Do-Tejo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Flor-Do-Tejo</h1>
+                    <span class="tagline">Seafood &bull; Poultry &bull; Frozen Foods</span>
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="order.html">Order Online</a></li>
+                <li><a href="track.html" class="active">Track Order</a></li>
+                <li><a href="cart.html" class="cart-link">Cart (<span id="cartCount">0</span>)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h2>Track Your Order</h2>
+            <p>Enter your order number to see real-time status updates</p>
+        </div>
+    </section>
+
+    <!-- Track Section -->
+    <section class="track-section">
+        <div class="container">
+            <!-- Search Box -->
+            <div class="track-search">
+                <div class="search-box">
+                    <input type="text" id="trackInput" placeholder="Enter your order number (e.g. FDT-2026-001)">
+                    <button class="btn btn-primary" onclick="trackOrder()">Track Order</button>
+                </div>
+            </div>
+
+            <!-- Order Status (hidden until searched) -->
+            <div class="track-result" id="trackResult" style="display:none;">
+                <!-- Order Info -->
+                <div class="track-header">
+                    <div class="track-order-info">
+                        <h3>Order <span id="trackOrderId"></span></h3>
+                        <p>Placed on <span id="trackOrderDate"></span></p>
+                    </div>
+                    <div class="track-status-badge" id="trackStatusBadge">Processing</div>
+                </div>
+
+                <!-- Progress Timeline -->
+                <div class="track-timeline">
+                    <div class="timeline-step completed" id="timelineStep1">
+                        <div class="timeline-icon">&#x2713;</div>
+                        <div class="timeline-content">
+                            <h4>Order Confirmed</h4>
+                            <p>Your order has been received and confirmed</p>
+                            <span class="timeline-time" id="timeConfirmed"></span>
+                        </div>
+                    </div>
+                    <div class="timeline-connector" id="connector1"></div>
+
+                    <div class="timeline-step" id="timelineStep2">
+                        <div class="timeline-icon">&#x1F4E6;</div>
+                        <div class="timeline-content">
+                            <h4>Being Prepared</h4>
+                            <p>Your items are being picked and packed</p>
+                            <span class="timeline-time" id="timePreparing"></span>
+                        </div>
+                    </div>
+                    <div class="timeline-connector" id="connector2"></div>
+
+                    <div class="timeline-step" id="timelineStep3">
+                        <div class="timeline-icon">&#x2744;</div>
+                        <div class="timeline-content">
+                            <h4>Quality Check</h4>
+                            <p>Cold chain verified, items inspected</p>
+                            <span class="timeline-time" id="timeChecked"></span>
+                        </div>
+                    </div>
+                    <div class="timeline-connector" id="connector3"></div>
+
+                    <div class="timeline-step" id="timelineStep4">
+                        <div class="timeline-icon">&#x1F69A;</div>
+                        <div class="timeline-content">
+                            <h4>Out for Delivery</h4>
+                            <p>Your order is on its way to you</p>
+                            <span class="timeline-time" id="timeDelivery"></span>
+                        </div>
+                    </div>
+                    <div class="timeline-connector" id="connector4"></div>
+
+                    <div class="timeline-step" id="timelineStep5">
+                        <div class="timeline-icon">&#x1F3E0;</div>
+                        <div class="timeline-content">
+                            <h4>Delivered</h4>
+                            <p>Order has been delivered successfully</p>
+                            <span class="timeline-time" id="timeDelivered"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Details -->
+                <div class="track-details">
+                    <div class="track-detail-card">
+                        <h4>Delivery Address</h4>
+                        <p id="trackAddress"></p>
+                    </div>
+                    <div class="track-detail-card">
+                        <h4>Order Items</h4>
+                        <div id="trackItems"></div>
+                    </div>
+                    <div class="track-detail-card">
+                        <h4>Order Total</h4>
+                        <p class="track-total" id="trackTotal"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Order Found -->
+            <div class="track-not-found" id="trackNotFound" style="display:none;">
+                <div class="not-found-icon">&#x1F50D;</div>
+                <h3>Order Not Found</h3>
+                <p>We couldn't find an order with that number. Please check and try again.</p>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="recent-orders" id="recentOrders">
+                <h3>Your Recent Orders</h3>
+                <div class="orders-list" id="ordersList">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Flor-Do-Tejo</h3>
+                    <p>Seafood &bull; Poultry &bull; Frozen Foods</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="order.html">Order Online</a></li>
+                        <li><a href="track.html">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>&#x1F4DE; 012 666 7718</p>
+                    <p>&#x1F4F1; 072 862 2501</p>
+                    <p>&#x2709; sales10@fdtza.co.za</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Flor-Do-Tejo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="products.js"></script>
+    <script src="cart.js"></script>
+    <script src="track.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
